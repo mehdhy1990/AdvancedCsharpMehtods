@@ -1,50 +1,14 @@
-﻿Console.WriteLine("Choose an example to run.");
-Action action = NicksAction;
+﻿Console.WriteLine("hello world ");
+var name = "Mehdi";
+var name1 = name.REeverse();
+Console.WriteLine(name);
+public static class Extensionstring{
 
-// now we can call the method by invoking the variable:
-action();
-action.Invoke(); // either way works!
-
-void NicksAction()
-{
-    Console.WriteLine("Hello from Nick!");
+    public static string REeverse(this string s)
+    {
+        var reverseChar = s.Reverse<char>().ToArray();
+        var reversed = new string(reverseChar);
+        return reversed;
+        
+    }
 }
-Calculator addFunction = AddFunction;
-Calculator subtractFunction = SubtractFunction;
-
-int AddFunction(int a, int b)
-{
-    return a + b;
-    
-    
-}
-
-int SubtractFunction(int a, int b)
-{
-    return a - b;
-}
-void DoSomethingAfterUserPressesEnter(Action callback)
-{
-    Console.WriteLine("Press enter for a surprise!");
-    Console.ReadLine();
-    callback();
-}
-
-DoSomethingAfterUserPressesEnter(NicksAction);
-void Calculate(Calculator calculateCallback)
-{
-    Console.WriteLine("Enter the first integer: ");
-    int a = int.Parse(Console.ReadLine());
-
-    Console.WriteLine("Enter the second integer: ");
-    int b = int.Parse(Console.ReadLine());
-
-    int result = calculateCallback(a, b);
-    Console.WriteLine($"The result is: {result}");
-}
-
-Console.WriteLine("Addition Example:");
-Calculate(addFunction);
-Console.WriteLine("Subtraction Example:");
-Calculate(subtractFunction);
-delegate int Calculator(int firstNumber, int secondNumber);
