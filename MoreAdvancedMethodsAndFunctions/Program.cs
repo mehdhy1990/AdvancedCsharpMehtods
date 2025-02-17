@@ -9,12 +9,14 @@ void NicksAction()
 {
     Console.WriteLine("Hello from Nick!");
 }
-Func<int, int, int> addFunction = AddFunction;
-Func<int, int, int> subtractFunction = SubtractFunction;
+Calculator addFunction = AddFunction;
+Calculator subtractFunction = SubtractFunction;
 
 int AddFunction(int a, int b)
 {
     return a + b;
+    
+    
 }
 
 int SubtractFunction(int a, int b)
@@ -29,7 +31,7 @@ void DoSomethingAfterUserPressesEnter(Action callback)
 }
 
 DoSomethingAfterUserPressesEnter(NicksAction);
-void Calculate(Func<int, int, int> calculateCallback)
+void Calculate(Calculator calculateCallback)
 {
     Console.WriteLine("Enter the first integer: ");
     int a = int.Parse(Console.ReadLine());
@@ -45,3 +47,4 @@ Console.WriteLine("Addition Example:");
 Calculate(addFunction);
 Console.WriteLine("Subtraction Example:");
 Calculate(subtractFunction);
+delegate int Calculator(int firstNumber, int secondNumber);
